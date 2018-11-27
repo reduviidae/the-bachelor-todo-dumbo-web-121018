@@ -51,17 +51,17 @@ def get_occupation(data, hometown)
   occupation
 end
 
+
 def get_average_age_for_season(data, season)
   count = 0
   total_age = 0
-  data.map do |key, value|
-    value.map do |contestants|
-      if key == season
-        total_age += contestants["age"].to_i
-        count += 1  
-      end
+  data[season].map do |contestants|
+    unless contestants["age"] == ""
+      # binding.pry
+      total_age += contestants["age"].to_f
+      count += 1 
     end
   end
   # binding.pry
-  average_age = (total_age / count)
+  average_age = (total_age / count).round
 end
