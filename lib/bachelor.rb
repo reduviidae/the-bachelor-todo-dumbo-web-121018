@@ -57,7 +57,7 @@ def get_average_age_for_season(data, season)
   total_age = 0
   data[season].map do |contestants|
     total_age += contestants["age"].to_i
-    count += 1
+    count += 1 unless contestants["age"] = ""
   end
   average_age = (total_age / count)
 end
